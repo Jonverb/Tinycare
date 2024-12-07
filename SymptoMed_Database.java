@@ -15,7 +15,7 @@ public class SymptoMed_Database {
   
       int answer = JOptionPane.showConfirmDialog(null, "Do you need assistance with your infant child?", "SymptoMed Finder", JOptionPane.YES_NO_CANCEL_OPTION);
       
-      //CONDITION IN YES OR NO STATEMENT
+      //CONDITION FOR YES OR NO STATEMENT
       if (answer == 1)
       {
          JOptionPane.showMessageDialog(null, "Feel free to ask us anytime for any concern regarding your infant child.");
@@ -31,16 +31,28 @@ public class SymptoMed_Database {
                   JOptionPane.showMessageDialog(null, "Feel free to ask us anytime for any concern regarding your infant child.");
             System.exit(0);
               }
-              
+             
+     String userInput = JOptionPane.showInputDialog(null, "Enter the symptoms (Ex.: fever, cough, headache): ", "SymptoMed Finder", JOptionPane.QUESTION_MESSAGE);
+      String[] userSymptoms = userInput.toLowerCase().split(",\\s*"); // Convert input to lowercase and split
+
       
-              
+      
+        // Ask the user to input symptoms using JOptionPane
+       // String userInput = JOptionPane.showInputDialog(null, "Enter the symptoms (Ex.: fever, cough, headache):", "Symptom Input", JOptionPane.QUESTION_MESSAGE);
+      //  if (userInput == null || userInput.trim().isEmpty()) {
+        //    JOptionPane.showMessageDialog(null, "No symptoms entered. Exiting the program.", "Error", JOptionPane.ERROR_MESSAGE);
+        //    System.exit(0);
+     //   }
+           
+   //   String[] userSymptoms = userInput.toLowerCase().split(",\\s*"); // Convert input to lowercase and split
+
       //String userInput;
      // userInput = JOptionPane.showInputDialog("Enter the symptoms (Ex.: fever, cough, headache): ");
 
     
         
-     System.out.println("Enter the symptoms (Ex.: fever, cough, headache): ");
-     String[] userSymptoms = input.nextLine().toLowerCase().split(",\\s*"); // Convert input to lowercase and split
+   //  System.out.println("Enter the symptoms (Ex.: fever, cough, headache): ");
+  //   String[] userSymptoms = input.nextLine().toLowerCase().split(",\\s*"); // Convert input to lowercase and split
         
        String filePath = "C:\\Users\\Andrew\\OneDrive\\AutoSave\\NetBeansProjects\\JavaApplication1\\build\\classes\\javaapplication1\\SymptoMed_Database - Sheet1.csv"; // Update with your CSV file path
        BufferedReader br = null; // BufferedReader for reading the CSV file
@@ -98,23 +110,18 @@ resultMessage.append("Illness: ").append(illness)
              .append(" (").append(String.format("%.2f", matchPercentage)).append("% match)\n")
              .append("Recommended Medication/Treatment: ").append(details[0]).append("\n")
              .append("Instruction: ").append(details[1]).append("\n")
-             .append("Reminder: ").append(details[2]).append("\n")
-             .append("-----------------------------\n");
+             .append("Reminder: ").append(details[2]).append("\n");
 
 // Display all information in one JOptionPane
 JOptionPane.showMessageDialog(null, resultMessage.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
-                  
-                  
-                  
                   
                     System.out.println("Illness: " + illness + " (" + String.format("%.2f", matchPercentage) + "% match)");
                     System.out.println("Recommended Medication/Treatment: " + details[0]);
                     System.out.println("Instruction: " + details[1]);
                     System.out.println("Reminder: " + details[2]);
-                    System.out.println("---------------------");
                 }
             } else {
-                System.out.println("No specific illness identified. Please consult a healthcare professional for further advice.");
+                JOptionPane.showMessageDialog(null, "No specific illness identified. Please consult a healthcare professional for further advice.");
             }
 
             
@@ -132,3 +139,6 @@ JOptionPane.showMessageDialog(null, resultMessage.toString(), "Results", JOption
         }
     }
 }
+
+
+
