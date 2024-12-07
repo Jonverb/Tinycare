@@ -15,7 +15,7 @@ public class SymptoMed_Database {
   
       int answer = JOptionPane.showConfirmDialog(null, "Do you need assistance with your infant child?", "SymptoMed Finder", JOptionPane.YES_NO_CANCEL_OPTION);
       
-      //CONDITION FOR YES OR NO STATEMENT
+            //CONDITION FOR YES OR NO STATEMENT
       if (answer == 1)
       {
          JOptionPane.showMessageDialog(null, "Feel free to ask us anytime for any concern regarding your infant child.");
@@ -26,34 +26,19 @@ public class SymptoMed_Database {
                    JOptionPane.showMessageDialog(null, "Feel free to ask us anytime for any concern regarding your infant child.");
             System.exit(0);
               }
-             else if (answer == -1)
+            else if (answer == -1)
               {
                   JOptionPane.showMessageDialog(null, "Feel free to ask us anytime for any concern regarding your infant child.");
             System.exit(0);
               }
-             
+        
+            // USER INPUT IN JOPTIONPANE INPUT DIALOG        
      String userInput = JOptionPane.showInputDialog(null, "Enter the symptoms (Ex.: fever, cough, headache): ", "SymptoMed Finder", JOptionPane.QUESTION_MESSAGE);
       String[] userSymptoms = userInput.toLowerCase().split(",\\s*"); // Convert input to lowercase and split
-
-      
-      
-        // Ask the user to input symptoms using JOptionPane
-       // String userInput = JOptionPane.showInputDialog(null, "Enter the symptoms (Ex.: fever, cough, headache):", "Symptom Input", JOptionPane.QUESTION_MESSAGE);
-      //  if (userInput == null || userInput.trim().isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "No symptoms entered. Exiting the program.", "Error", JOptionPane.ERROR_MESSAGE);
-        //    System.exit(0);
-     //   }
-           
-   //   String[] userSymptoms = userInput.toLowerCase().split(",\\s*"); // Convert input to lowercase and split
-
-      //String userInput;
-     // userInput = JOptionPane.showInputDialog("Enter the symptoms (Ex.: fever, cough, headache): ");
-
-    
         
-   //  System.out.println("Enter the symptoms (Ex.: fever, cough, headache): ");
-  //   String[] userSymptoms = input.nextLine().toLowerCase().split(",\\s*"); // Convert input to lowercase and split
-        
+       
+      
+            // DATABASE SRC
        String filePath = "C:\\Users\\Andrew\\OneDrive\\AutoSave\\NetBeansProjects\\JavaApplication1\\build\\classes\\javaapplication1\\SymptoMed_Database - Sheet1.csv"; // Update with your CSV file path
        BufferedReader br = null; // BufferedReader for reading the CSV file
         Map<String, Double> illnessMatchPercentage = new HashMap<String, Double>(); // Map to store illnesses and match percentage
@@ -105,6 +90,7 @@ public class SymptoMed_Database {
                     String[] details = illnessDetails.get(illness);
 
                     
+            // DISPLAYS THE OUTPUT UPON ENTERING THE ILLNESS IN JOPTIONPANE        
                 StringBuilder resultMessage = new StringBuilder();
 resultMessage.append("Illness: ").append(illness)
              .append(" (").append(String.format("%.2f", matchPercentage)).append("% match)\n")
@@ -115,15 +101,21 @@ resultMessage.append("Illness: ").append(illness)
 // Display all information in one JOptionPane
 JOptionPane.showMessageDialog(null, resultMessage.toString(), "Results", JOptionPane.INFORMATION_MESSAGE);
                   
+
+            // OUTPUT DISPLAY IN NETBEANS w/o JOPTIONPANE
                     System.out.println("Illness: " + illness + " (" + String.format("%.2f", matchPercentage) + "% match)");
                     System.out.println("Recommended Medication/Treatment: " + details[0]);
                     System.out.println("Instruction: " + details[1]);
                     System.out.println("Reminder: " + details[2]);
                 }
-            } else {
+            } 
+         
+            // CONDITION IF THE INPUT DIALOG IS BLANK AND WRONG ILLNESS IS PROVIDED
+            else 
+            {
                 JOptionPane.showMessageDialog(null, "No specific illness identified. Please consult a healthcare professional for further advice.");
             }
-
+           
             
         } catch (IOException e) {
             e.printStackTrace(); // To handle file reading errors
